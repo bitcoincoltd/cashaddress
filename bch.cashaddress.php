@@ -167,7 +167,7 @@ class Base32
      * {@inheritDoc}
      * @see GmpMathInterface::bitwiseAnd()
      */
-    protected static function bitwiseAnd(\GMP $first, \GMP $other)
+    protected static function bitwiseAnd($first, $other)
     {
         return gmp_and($first, $other);
     }
@@ -176,7 +176,7 @@ class Base32
      * {@inheritDoc}
      * @see GmpMathInterface::rightShift()
      */
-    protected static function rightShift(\GMP $number, $positions)
+    protected static function rightShift($number, $positions)
     {
         // Shift 1 right = div / 2
         return gmp_div($number, gmp_pow(gmp_init(2, 10), $positions));
@@ -186,7 +186,7 @@ class Base32
      * {@inheritDoc}
      * @see GmpMathInterface::bitwiseXor()
      */
-    protected static function bitwiseXor(\GMP $first, \GMP $other)
+    protected static function bitwiseXor($first, $other)
     {
         return gmp_xor($first, $other);
     }
@@ -195,7 +195,7 @@ class Base32
      * {@inheritDoc}
      * @see GmpMathInterface::leftShift()
      */
-    protected static function leftShift(\GMP $number, $positions)
+    protected static function leftShift($number, $positions)
     {
         // Shift 1 left = mul by 2
         return gmp_mul($number, gmp_pow(2, $positions));
@@ -205,7 +205,7 @@ class Base32
      * @param \GMP $prev
      * @return resource
      */
-    protected static function polyModStep(\GMP $prev)
+    protected static function polyModStep($prev)
     {
         $mask = gmp_init(self::$maskHex, 16);
         $one = gmp_init(1);
