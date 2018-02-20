@@ -1,4 +1,7 @@
 <?php
+
+include_once(__DIR__.'/bch.cashaddress.php');
+
 $validAddresses = [
     "bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r",
     "bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a",
@@ -26,8 +29,6 @@ foreach ($validAddresses as $addr) {
     echo valid($addr) ? "OK" : "FAIL";
     echo ": " . $addr . "\n";
 }
-
-include_once(__DIR__.'/bch.cashaddress.php');
 
 function valid($addr) {
     if (strpos($addr, ":") === false) {

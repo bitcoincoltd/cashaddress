@@ -112,7 +112,11 @@ class CashAddress
             throw new CashAddressException("Hash length does not match version");
         }
 
-        $hash = pack("C*", ...array_slice($payloadBytes, 1));
+        $hash = "";
+
+        foreach (array_slice($payloadBytes, 1) as $byte) {
+            $hash .= pack("C*", $byte);
+        }
 
         return [$scriptType, $hash];
     }
@@ -334,7 +338,13 @@ class Base32
             throw new Base32Exception("Invalid location for separator character");
         }
 
-        $prefix = pack("C*", ...array_slice($chars, 0, $idxSeparator));
+        $prefix = "";
+
+        foreach (array_slice($chars, 0, $idxSeparator) as $byte) {
+            $prefix .= pack("C*", $byte);
+        }
+
+
         $chk = self::prefixChk($prefix);
 
         $words = [];
